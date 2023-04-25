@@ -25,15 +25,15 @@ U64 append(U64 str)
 
 
 I64 fps_frames = frames;
-I64 fps_jiffies = cnts.jiffies;
+I64 fps_jiffies = counts.jiffies;
 
 U0 UpdateTOSMenuBar(Context2D *ctx)
 {
-    if (cnts.jiffies>=fps_jiffies+1000)
+    if (counts.jiffies>=fps_jiffies+1000)
     {
         winmgr.fps = frames-fps_frames;
         fps_frames = frames;
-        fps_jiffies = cnts.jiffies;
+        fps_jiffies = counts.jiffies;
     }
     U8 *st;
 	CCPU *c;
@@ -43,7 +43,7 @@ U0 UpdateTOSMenuBar(Context2D *ctx)
     Rect2D(ctx, 0, 0, 640, 8, 0x0000a800);
     Print2D(ctx, 0, 0,,0x0000a800, wall->top_line);
     WinCalcIdles;
-    for (i=0;i<mp_cnt;i++) {
+    for (i=0;i<mp_count;i++) {
         c=&cpu_structs[i];
         if (i&1)
             Print2D(ctx, 8*44+(8*(i*2)), 0,,0x0000a800, "%2tf",100.0*(1.0-c->idle_factor));

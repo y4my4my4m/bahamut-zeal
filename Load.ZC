@@ -20,14 +20,14 @@ Context2D *pixel_ctx = NewContext2D(512, 480, 32);
 
 U0 cpu_task()
 {
-    while (1) { if (!Debug && !KeyDown(SC_F1)) cycle(0); };
+    while (1) { if (!SnesDebug && !KeyDown(SC_F1)) cycle(0); };
 }
 
 U0 gfx_task()
 {
     while (1)
     {
-        if (yPos>238 && !Debug)
+        if (yPos>238 && !SnesDebug)
         {
             setPixels(pixel_ctx->fb);        
             CopyRect2D(screen_ctx, (screen_ctx->width/2)-(pixel_ctx->width/2), 0, pixel_ctx);
@@ -41,13 +41,13 @@ U0 input_loop()
 {
     while (1)
     {
-        WinMsUpdate;
-        KbdMsHndlr(0, 0);
+        WinMouseUpdate;
+        KbdMouseHandler(0, 0);
         if (KeyDown(SC_ESC))
         {
             FifoI64Flush(kbd.down_bitmap);
-            Debug = TRUE;
-            Dbg;
+            SnesDebug = TRUE;
+            SnesDebug;
         }
         if (KeyDown(Char2ScanCode('`')))
         {
@@ -103,4 +103,4 @@ U0 Bahamut(U8 *filename)
     }
 }
 
-while (1) Bahamut(PopUpPickFile("T:/ROMs/"));
+while (1) Bahamut(PopUpPickFile("C:/Home/bahamut/ROMs/"));

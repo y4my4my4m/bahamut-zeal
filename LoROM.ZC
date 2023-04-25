@@ -2,7 +2,7 @@ U0 parseHeader(U8 *rom, ROMHeader *header)
 {
     I64 i;
     header->name = CAlloc(24);
-    MemCpy(header->name, rom+0x7FC0, 20);
+    MemCopy(header->name, rom+0x7FC0, 20);
     i = StrLen(header->name)-1;
     while (header->name[i]==' ') { header->name[i]=NULL; i--; }
     header->type = rom[0x7fd5] & 0xf;

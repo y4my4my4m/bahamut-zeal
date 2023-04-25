@@ -157,9 +157,9 @@ ROMHeader header;
     I64 cpuMemOps = 0;
     I64 apuCatchCycles = 0;
 
-    I64 cyclesLeft; // moved from CPU.HC
-    Bool irqWanted; // moved from CPU.HC
-    Bool nmiWanted; // moved from CPU.HC
+    I64 cyclesLeft; // moved from CPU.ZC
+    Bool irqWanted; // moved from CPU.ZC
+    Bool nmiWanted; // moved from CPU.ZC
 
     // for cpu-ports
     I64 ramAdr = 0;

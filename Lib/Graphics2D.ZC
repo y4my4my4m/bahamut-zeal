@@ -148,7 +148,7 @@ U0 Blot2D(Context2D *dst, I64 x, I64 y, Context2D *src, U32 color=NULL)
 			{
 				if (!color)
 				{
-					MemCpy(i+sx+((dst->width*yy)*dst->bpp/8), j+dx+((src->width*yy)*src->bpp/8), 3);
+					MemCopy(i+sx+((dst->width*yy)*dst->bpp/8), j+dx+((src->width*yy)*src->bpp/8), 3);
 				}
 				else
 				{
@@ -216,7 +216,7 @@ U0 CopyRect2D(Context2D *ctx, I64 x, I64 y, Context2D *rect)
   clip_y = y;
   while (rect_row<(rect->height-rect_y_ofs) && clip_y<ctx->height) 
   {    
-    MemCpy(ctx_pos+(y*((ctx->width)*(display.bpp/8)))+x*(display.bpp/8),rect_pos,(rect_line)*(display.bpp/8));
+    MemCopy(ctx_pos+(y*((ctx->width)*(display.bpp/8)))+x*(display.bpp/8),rect_pos,(rect_line)*(display.bpp/8));
     ctx_pos+=(ctx->width)*(display.bpp/8);
     rect_pos+=(rect->width)*(display.bpp/8);
 	clip_y++;
@@ -246,5 +246,5 @@ U0 SysFrameBufferInit()
 
 U0 Flip2D(Context2D *ctx)
 {
-	MemCpy(sys_fb->fb, ctx->fb, (display.width*display.height)*display.bpp/8);
+	MemCopy(sys_fb->fb, ctx->fb, (display.width*display.height)*display.bpp/8);
 }
